@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %} Candidates Form  {% endblock title %}
+<!-- Crispy Form Load -->
+{% load crispy_forms_tags %}
+<!-- Navbar -->
+{% block nav-content %}
+<i class="fas fa-user-check">&nbsp;&nbsp; CANDIDATE</i>
+{% endblock nav-content %}
+<!-- Page Content -->
+{% block content %}
+<div class="container mb-3 mt-2" style="width:450%;">
+    <div class="card p-3 border-dark col-md-4 offset-4">
+        <form method="post" autocomplete="off">{% csrf_token %}
+        {{form.name|as_crispy_field}}
+            {{form.phone|as_crispy_field}}
+            {{form.email|as_crispy_field}}
+            {{form.gender|as_crispy_field}}
+            {{form.careen|as_crispy_field}}<br>
+            <hr>
+            <div class="d-grid gap-2 mb-3">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <a href="{% url 'read' %}" class="btn btn-secondary">Cancel</a>
+            </div>
+            <hr>
+        </form>
+    </div>
+</div>
+{% endblock content %}
+

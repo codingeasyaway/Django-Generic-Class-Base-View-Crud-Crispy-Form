@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %} Candidates List  {% endblock title %}
+{% load static %}
+<!--Navbar bg-color-->
+{% block navbar %}bg-danger{% endblock navbar %}
+<!--Navbar content-->
+{% block nav-content %}
+<i class="fas fa-user-check">&nbsp;&nbsp; DELETE CANDIDATE</i>
+{% endblock nav-content %}
+
+<!-- Footer -->
+{% block footer %}style="color:#ff7f7f;"{% endblock footer %}
+<!---Page content-->
+{% block content %}
+<br>
+<div class="container mt-5" style="width:450px">
+    <div class="card p-3 boder-dark">
+        <h6 class="model-title">
+            <i class="fas fa-trash_alt">&nbsp;&nbsp; Delete Candidate</i>
+        </h6>
+        <hr>
+        <div class="text-center text-center">
+            <i class="fas fa-time-circle fa-5x mb-4 mt-2"></i>
+        </div>
+        <div class="text-center text-danger">
+            <span>DO YOU WANT TO DELETE THIS CANDIDATE ???</span>
+            <div class="text-dark mt-3 mb-2">Candidate: <strong>{{candidate.name}}</strong></div>
+        </div>
+        <hr>
+        <form method="post">{% csrf_token %}
+            <BUTTON class="btn btn-outline-danger btn-sm ms-2" style="float:right;">Delete</BUTTON>
+            <a href="{% url 'read' %}" class="btn btn-secondary btn-sm" style="float:right;">Cancel</a>
+        </form>
+    </div>
+    <br>
+    <hr><br>
+    <span class="text-danger">If you proceed, this date will become unrecoverable.</span>
+</div>
+{% endblock content %}
